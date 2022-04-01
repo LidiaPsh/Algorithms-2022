@@ -155,6 +155,31 @@ abstract class AbstractTaskTests : AbstractFileTests() {
         }
 
         println("sortTemperatures: $perf")
+        //my test
+        try {
+            sortTemperatures("input/temp_my.txt", "temp.txt")
+            assertFileContent(
+                "temp.txt",
+                """
+                    -120.6
+                    -120.6
+                    -120.6
+                    -120.6
+                    -18.4
+                    -18.4
+                    111.0
+                    111.0
+                    199.5
+                    199.5
+                    204.7
+                    204.7
+                    221.3
+                    221.3
+                """.trimIndent()
+            )
+        } finally {
+            File("temp.txt").delete()
+        }
     }
 
     private fun generateSequence(totalSize: Int, answerSize: Int): PerfResult<Unit> {
@@ -320,6 +345,34 @@ abstract class AbstractTaskTests : AbstractFileTests() {
         }
 
         println("sortSequence: $perf")
+        //my test
+        try {
+            sortSequence("input/seq_my.txt", "temp.txt")
+            assertFileContent(
+                "temp.txt",
+                """
+                        78
+                        32
+                        13
+                        45
+                        49
+                        32
+                        85
+                        45
+                        91
+                        41
+                        41
+                        41
+                        41
+                        41
+                        41
+                        41
+                        41
+                    """.trimIndent()
+            )
+        } finally {
+            File("temp.txt").delete()
+        }
     }
 
     private fun generateArrays(
